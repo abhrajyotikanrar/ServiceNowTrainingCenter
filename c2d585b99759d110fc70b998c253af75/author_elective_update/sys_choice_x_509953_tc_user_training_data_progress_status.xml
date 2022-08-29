@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="progress_status" table="x_509953_tc_user_training_data" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>progress_status</element>
+            <name>x_509953_tc_user_training_data</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 11:29:47</sys_created_on>
+            <sys_name>progress_status</sys_name>
+            <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+            <sys_update_name>sys_choice_x_509953_tc_user_training_data_progress_status</sys_update_name>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>progress_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Registered</label>
+            <language>en</language>
+            <name>x_509953_tc_user_training_data</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 11:29:47</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>registered</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>progress_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>In Progress</label>
+            <language>en</language>
+            <name>x_509953_tc_user_training_data</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 11:29:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>in_progress</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>progress_status</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Completed</label>
+            <language>en</language>
+            <name>x_509953_tc_user_training_data</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 11:30:10</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>completed</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

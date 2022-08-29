@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="catrgory" table="x_509953_tc_training" version="3">
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>catrgory</element>
+            <name>x_509953_tc_training</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:50:34</sys_created_on>
+            <sys_name>catrgory</sys_name>
+            <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+            <sys_update_name>sys_choice_x_509953_tc_training_catrgory</sys_update_name>
+        </sys_choice_set>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Coding &amp; Scripting</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:52:26</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>coding_n_scripting</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>IT Infra</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:52:48</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>it_infra</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>IT Process</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:51:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>it_process</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Language &amp; Behavioral</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:50:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>language_n_behavioral</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Others</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:54:17</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>others</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>catrgory</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Soft Skill</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <sequence/>
+            <synonyms/>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-15 09:51:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>soft_skill</value>
+        </sys_choice>
+    </sys_choice>
+</record_update>

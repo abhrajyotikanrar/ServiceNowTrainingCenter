@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>welcome_page__training_center_</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Welcome Page (Training Center)</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var currentUser = gs.getUserID();
+    var grUser = new GlideRecord("sys_user");
+    if (grUser.get(currentUser)) {
+        data.currentUserFirstName = grUser.first_name.toString();
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 20:48:22</sys_created_on>
+        <sys_id>f76f87fd97511510fc70b998c253af49</sys_id>
+        <sys_name>Welcome Page (Training Center)</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_f76f87fd97511510fc70b998c253af49</sys_update_name>
+        <template><![CDATA[<header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white" style="padding: 100px 0px;">
+                            <!-- Page heading-->
+                            <p class="mb-5" style="font-size: 4em">Hi {{data.currentUserFirstName}}!<br/> Welcome to Training Center</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</header>]]></template>
+    </sp_widget>
+</record_update>

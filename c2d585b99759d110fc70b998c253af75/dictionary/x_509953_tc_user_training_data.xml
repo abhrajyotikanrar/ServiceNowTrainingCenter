@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="ad8dc5b19799d110fc70b998c253af44" label="User Training Data" max_length="40" name="x_509953_tc_user_training_data" type="collection">
+        <element label="Completed On" max_length="40" name="completed_on" read_only="true" type="glide_date_time"/>
+        <element display="true" label="Display Label" max_length="150" name="display_label" read_only="true" type="string"/>
+        <element label="Feedback" max_length="1000" name="feedback" type="string"/>
+        <element default="0%" label="Progress Percentage" max_length="5" name="progress_percentage" read_only="true" type="string"/>
+        <element choice="1" label="Progress Status" mandatory="true" max_length="40" name="progress_status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Registered" sequence="1" value="registered"/>
+                <element inactive_on_update="false" label="In Progress" sequence="2" value="in_progress"/>
+                <element inactive_on_update="false" label="Completed" sequence="3" value="completed"/>
+            </choice>
+        </element>
+        <element label="Started On" max_length="40" name="started_on" read_only="true" type="glide_date_time"/>
+        <element label="Training" mandatory="true" max_length="32" name="training" reference="x_509953_tc_training" reference_qual="active=true^status=published^EQ" reference_qual_condition="active=true^status=published^EQ" type="reference"/>
+        <element label="User" mandatory="true" max_length="32" name="user" reference="sys_user" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <index name="index">
+            <element name="training"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

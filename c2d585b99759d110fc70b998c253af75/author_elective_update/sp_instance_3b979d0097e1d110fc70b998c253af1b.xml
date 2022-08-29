@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="DELETE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">7a054ebb97959110fc70b998c253af86</sp_column>
+        <sp_widget display_value="Training Module Navigation">eede213797159110fc70b998c253affd</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 11:51:14</sys_created_on>
+        <sys_id>3b979d0097e1d110fc70b998c253af1b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_instance_3b979d0097e1d110fc70b998c253af1b</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-21 11:51:14</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="DELETE" query="documentkey=3b979d0097e1d110fc70b998c253af1b"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sp_instance_3b979d0097e1d110fc70b998c253af1b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance"><sp_instance action="INSERT_OR_UPDATE"><active>true</active><class_name/><color>default</color><css/><glyph/><id/><order>1</order><roles/><short_description/><size>md</size><sp_column display_value="1">7a054ebb97959110fc70b998c253af86</sp_column><sp_widget display_value="Training Module Navigation">eede213797159110fc70b998c253affd</sp_widget><sys_class_name>sp_instance</sys_class_name><sys_created_by>abhrajyoti.kanrar</sys_created_by><sys_created_on>2022-08-21 11:51:14</sys_created_on><sys_id>3b979d0097e1d110fc70b998c253af1b</sys_id><sys_mod_count>0</sys_mod_count><sys_name/><sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package><sys_policy/><sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope><sys_update_name>sp_instance_3b979d0097e1d110fc70b998c253af1b</sys_update_name><sys_updated_by>abhrajyoti.kanrar</sys_updated_by><sys_updated_on>2022-08-21 11:51:14</sys_updated_on><title/><url/><widget_parameters/></sp_instance><sys_translated_text action="delete_multiple" query="documentkey=3b979d0097e1d110fc70b998c253af1b"/></record_update>]]></payload>
+        <payload_hash>-1911642118</payload_hash>
+        <record_name/>
+        <reverted_from/>
+        <source>1ad585b99759d110fc70b998c253af77</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 11:51:14</sys_created_on>
+        <sys_id>bf97154097e1d110fc70b998c253af23</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182c03e25d30000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-21 11:51:14</sys_updated_on>
+        <type>Instance</type>
+        <update_guid>f797154047e1d11073e6fb286faa9123</update_guid>
+        <update_guid_history>f797154047e1d11073e6fb286faa9123:-1911642118</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="">6cf8918097e1d110fc70b998c253af5a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 11:57:01</sys_created_on>
+        <sys_db_object display_value="" name="sp_instance">sp_instance</sys_db_object>
+        <sys_id>8110e5e0b3dd45e9b7aa8d93062ed8f9</sys_id>
+        <sys_metadata>3b979d0097e1d110fc70b998c253af1b</sys_metadata>
+        <sys_name/>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sp_instance_3b979d0097e1d110fc70b998c253af1b</sys_update_name>
+        <sys_update_version display_value="sp_instance_3b979d0097e1d110fc70b998c253af1b">bf97154097e1d110fc70b998c253af23</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

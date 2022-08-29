@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition><![CDATA[function checkTrainingAssignment() {
+    var grAssignment = new GlideRecord("x_509953_tc_user_training_data");
+    grAssignment.addEncodedQuery("due_date<javascript:gs.beginningOfToday()^progress_statusINassigned,started");
+    grAssignment.query();
+    if (grAssignment.next())
+        return true;
+    else
+        return false;
+}
+
+checkTrainingAssignment();]]></condition>
+        <conditional>true</conditional>
+        <entered_time>1970-01-01 01:00:00</entered_time>
+        <name>Expire the user training assignment after due date</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2022-08-14 19:34:51</run_start>
+        <run_time>1970-01-01 01:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[function expireAssignedModules(trainingRec) {
+    var grMod = new GlideRecord("x_509953_tc_m2m_assigned_modules");
+    grMod.addQuery("progress", "assigned");
+    grMod.addQuery("user_training_record", trainingRec.sys_id);
+    grMod.query();
+    while (grMod.next()) {
+        grMod.progress = "expired";
+        grMod.update();
+    }
+}
+
+function expireTrainingAssignment() {
+    var grAssignment = new GlideRecord("x_509953_tc_user_training_data");
+    grAssignment.addEncodedQuery("due_date<javascript:gs.beginningOfToday()^progress_statusINassigned,started");
+    grAssignment.query();
+    while (grAssignment.next()) {
+        grAssignment.progress_status = "expired";
+        grAssignment.update();
+
+        expireAssignedModules(grAssignment);
+    }
+}
+
+expireTrainingAssignment();]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 19:50:48</sys_created_on>
+        <sys_id>769ebebd97111510fc70b998c253afca</sys_id>
+        <sys_name>Expire the user training assignment after due date</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sysauto_script_769ebebd97111510fc70b998c253afca</sys_update_name>
+        <time_zone>GMT</time_zone>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

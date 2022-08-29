@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="57e509b99759d110fc70b998c253afcf" label="Training" max_length="40" name="x_509953_tc_training" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Background Image" max_length="40" name="background_image" type="user_image"/>
+        <element choice="1" label="Catrgory" mandatory="true" max_length="40" name="catrgory" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Coding &amp; Scripting" value="coding_n_scripting"/>
+                <element inactive_on_update="false" label="IT Infra" value="it_infra"/>
+                <element inactive_on_update="false" label="IT Process" value="it_process"/>
+                <element inactive_on_update="false" label="Language &amp; Behavioral" value="language_n_behavioral"/>
+                <element inactive_on_update="false" label="Others" value="others"/>
+                <element inactive_on_update="false" label="Soft Skill" value="soft_skill"/>
+            </choice>
+        </element>
+        <element label="Details" mandatory="true" max_length="8000" name="details" type="html"/>
+        <element display="true" label="Display Title" max_length="150" name="display_title" type="string"/>
+        <element label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Published" max_length="40" name="published" read_only="true" type="glide_date_time"/>
+        <element choice="1" default="draft" label="Status" mandatory="true" max_length="40" name="status" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Draft" value="draft"/>
+                <element inactive_on_update="false" label="Published" value="published"/>
+                <element inactive_on_update="false" label="Retired" value="retired"/>
+                <element inactive_on_update="false" label="Review" value="review"/>
+            </choice>
+        </element>
+        <element label="Version" mandatory="true" max_length="10" name="version" type="string"/>
+    </element>
+</database>

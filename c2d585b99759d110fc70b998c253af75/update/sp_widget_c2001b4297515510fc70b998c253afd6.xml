@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>div {
+  position: relative;
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  color: white;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+}
+
+.card-img{
+  width: 100%;
+  height: 40rem;
+  object-fit: cover;
+  opacity: 0.4;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>training_name_display</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Training Name Display</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+
+    var trainingSysId = $sp.getParameter('sys_id');
+    data.training = getTrainingDetails(trainingSysId);
+
+    function getTrainingDetails(sysId) {
+        var imgSrc = "a963fa0697dd1510fc70b998c253af17.iix";
+        var grTraining = new GlideRecord("x_509953_tc_training");
+
+        if (grTraining.get(sysId)) {
+            var grAttachment = new GlideRecord("sys_attachment");
+            grAttachment.addQuery("file_name", "background_image");
+            grAttachment.addQuery("table_sys_id", grTraining.sys_id);
+            grAttachment.query();
+            if (grAttachment.next())
+                imgSrc = grAttachment.sys_id + ".iix";
+
+            return {
+                "sys_id": grTraining.sys_id.toString(),
+                "name": grTraining.name.toString(),
+                "background_image": imgSrc,
+                "catrgory": grTraining.catrgory.getDisplayValue().toString(),
+                "published_date": grTraining.published.getDisplayValue().toString(),
+                "version": grTraining.version.toString(),
+            };
+        }
+    }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-15 15:29:28</sys_created_on>
+        <sys_id>c2001b4297515510fc70b998c253afd6</sys_id>
+        <sys_name>Training Name Display</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_c2001b4297515510fc70b998c253afd6</sys_update_name>
+        <template><![CDATA[<div style="background: black;">
+  <img class="card-img" src="{{c.data.training.background_image}}" alt="{{c.data.training.name}}">
+  <div class="text-overlay">
+    <p style="font-size: 4rem;">
+      {{c.data.training.name}} ({{c.data.training.version}})
+    </p>
+    <p style="font-size: 1.5rem;">
+      {{c.data.training.catrgory}} | Published on {{c.data.training.published_date}}
+    </p>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

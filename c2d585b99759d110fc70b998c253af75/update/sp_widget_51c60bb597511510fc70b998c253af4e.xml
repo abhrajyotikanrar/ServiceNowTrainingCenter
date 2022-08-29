@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.panel-heading{
+  border: solid 1px;
+  background-color: #f5f5f5;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>completed_trainings</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Completed Trainings</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var currentUser = gs.getUserID();
+    data.expiredTrainings = getExpiredTrainings(currentUser);
+
+
+    function getExpiredTrainings(userSysId) {
+        var expiredTrainings = [];
+        var grTrainings = new GlideRecord("x_509953_tc_user_training_data");
+        grTrainings.addQuery("user", userSysId);
+        grTrainings.addQuery("progress_status", "completed");
+        grTrainings.query();
+        while (grTrainings.next()) {
+            expiredTrainings.push({
+                "training_name": grTrainings.training.name.toString(),
+                "training_sys_id": grTrainings.training.sys_id.toString(),
+                "training_version": grTrainings.training.version.toString(),
+                "training_url": "tc?id=training_view&sys_id=" + grTrainings.training.sys_id,
+                "training_completed_on": grTrainings.completed_on.getDisplayValue().toString()
+            });
+        }
+
+        return expiredTrainings;
+    }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 20:10:31</sys_created_on>
+        <sys_id>51c60bb597511510fc70b998c253af4e</sys_id>
+        <sys_name>Completed Trainings</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_51c60bb597511510fc70b998c253af4e</sys_update_name>
+        <template><![CDATA[<div style="width: 100%">
+  <div class="panel-heading"> 
+    <h3 class="h4 panel-title">Trainings completed by you</h3>
+	</div>
+  
+  <div class="card" style="100%">
+  <ul class="list-group list-group-flush">
+    <li ng-if="c.data.expiredTrainings.length == 0" class="list-group-item">
+      You have not completed any training yet.
+    </li>
+    <li ng-repeat="training in c.data.expiredTrainings" class="list-group-item">
+    	<a href="{{::training.training_url}}">
+        <div data-bs-toggle="tooltip" data-bs-placement="right" title="{{::training.training_name}}">
+        	<b>{{::training.training_name}}</b><br/>
+          <b>Version:</b> {{::training.training_version}}<br/>
+          <b>Completed on:</b> {{::training.training_completed_on}}
+      	</div>
+      </a>
+    </li>
+  </ul>
+	</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

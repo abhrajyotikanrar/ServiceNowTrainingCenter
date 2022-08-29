@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.card{
+  --card-gradient: rgba(0, 0, 0, 0.8);
+  --card-gradient: #5e9ad9, #e271ad;
+  --card-blend-mode: overlay;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+  padding-bottom: 1rem;
+  background-image: linear-gradient(var(--card-gradient), white max(9.5rem, 27vh));
+  overflow: hidden;
+}
+.card img {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: max(10rem, 30vh);
+  aspect-ratio: 4/3;
+  /*mix-blend-mode: var(--card-blend-mode);*/
+}
+.card img ~ * {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.card a &gt; :last-child {
+  margin-bottom: 0;
+}
+.card:hover, .card:focus-within {
+  --card-gradient: #24a9d5 max(8.5rem, 20vh);
+}
+
+/* Additional demo display styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  color: #444;
+  background-color: #e1faf1;
+}
+
+.card h5 {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.card a {
+  color: inherit;
+}
+
+.card-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+  grid-gap: 1.5rem;
+  max-width: 100vw;
+  width: 120ch;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.card-description{
+  display: -webkit-box;   
+   -webkit-line-clamp: 3;   
+   -webkit-box-orient: vertical;     
+   overflow: hidden; 
+}
+
+.text-overlay {
+  position: relative;
+  top: -19rem;
+  right: -1rem;
+  float: right;
+  font-weight: bold; 
+  color: white; 
+  padding: 0 1rem;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>active_trainings</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Active Trainings</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    data.trainings = getActiveTrainings();
+
+    function getActiveTrainings() {
+        var trainings = [];
+        var grTraining = new GlideRecord("x_509953_tc_training");
+        grTraining.addQuery("active", "true");
+        grTraining.addQuery("status", "published");
+        grTraining.query();
+        while (grTraining.next()) {
+            trainings.push({
+                "training_name": grTraining.name.toString(),
+                "training_category": grTraining.catrgory.getDisplayValue().toString(),
+                "training_details": grTraining.details.getHTMLValue().toString(),
+                "published_date": grTraining.published.getDisplayValue().toString(),
+                "training_version": grTraining.version.toString(),
+                "training_url": "tc?id=training_view&sys_id=" + grTraining.sys_id,
+                "background_img": getBackgroundImage(grTraining.sys_id),
+                "user_status": getUserTrainingStatus(grTraining.sys_id)
+            });
+        }
+
+        return trainings;
+    }
+
+    function getUserTrainingStatus(trainingSysId) {
+        var currentUser = gs.getUserID();
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        grUT.addQuery("user", currentUser);
+        grUT.addQuery("training", trainingSysId);
+        grUT.query();
+        if (grUT.next())
+            return grUT.progress_status.toString();
+        else
+            return "";
+    }
+
+    function getBackgroundImage(trainingSysId) {
+        var grAttachment = new GlideRecord("sys_attachment");
+        grAttachment.addQuery("file_name", "background_image");
+        grAttachment.addQuery("table_sys_id", trainingSysId);
+        grAttachment.query();
+        if (grAttachment.next())
+            return grAttachment.sys_id + ".iix";
+        else
+            return "a963fa0697dd1510fc70b998c253af17.iix";
+    }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-15 10:23:45</sys_created_on>
+        <sys_id>b30a0e0e971d1510fc70b998c253af5f</sys_id>
+        <sys_name>Active Trainings</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_b30a0e0e971d1510fc70b998c253af5f</sys_update_name>
+        <template><![CDATA[<div>
+  <div ng-if="c.data.trainings.length == 0">
+    No published traning is available
+  </div>
+  
+  <ul class="card-wrapper">
+  	<li class="card" ng-repeat="item in c.data.trainings">
+      <a href="{{::item.training_url}}">
+        <div>
+          <img src="{{::item.background_img}}" alt="{{::item.training_name}}">
+          <div ng-if="::item.user_status == 'registered'" style="background-color: #00a9b6;" class="text-overlay">
+            {{::item.user_status.split("_").join(" ").toUpperCase()}}
+          </div>
+          <div ng-if="::item.user_status == 'in_progress'" style="background-color: #d97000;" class="text-overlay">
+            {{::item.user_status.split("_").join(" ").toUpperCase()}}
+          </div>
+          <div ng-if="::item.user_status == 'completed'" style="background-color: #00a91b;" class="text-overlay">
+            {{::item.user_status.split("_").join(" ").toUpperCase()}}
+          </div>
+          <h5><b>{{::item.training_name}} ({{::item.training_version}})</b></h5>
+          <p><b>Category:</b> {{::item.training_category}}</p>
+          <p class="card-description" ng-bind-html="::item.training_details"></p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>]]></template>
+    </sp_widget>
+</record_update>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="display_title" label="Display Title" language="en" table="x_509953_tc_training">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>display_title</element>
+            <help/>
+            <hint/>
+            <label>Display Title</label>
+            <language>en</language>
+            <name>x_509953_tc_training</name>
+            <plural>Display Titles</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 10:57:02</sys_created_on>
+            <sys_name>Display Title</sys_name>
+            <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+            <sys_update_name>sys_documentation_x_509953_tc_training_display_title_en</sys_update_name>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

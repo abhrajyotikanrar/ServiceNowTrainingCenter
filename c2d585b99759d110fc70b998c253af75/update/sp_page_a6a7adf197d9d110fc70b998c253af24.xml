@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>section.page {
+	background-color: $sp-homepage-bg;
+}
+section.page, main.body {
+  padding-top: 0px !important;
+}
+.container-bottom-margin{
+	margin-bottom: 1rem;
+}</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>tc_home_page</id>
+        <internal>false</internal>
+        <omit_watcher>false</omit_watcher>
+        <public>false</public>
+        <roles/>
+        <seo_script/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 13:14:59</sys_created_on>
+        <sys_id>a6a7adf197d9d110fc70b998c253af24</sys_id>
+        <sys_name>tc_home_page</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_page_a6a7adf197d9d110fc70b998c253af24</sys_update_name>
+        <title>TC Home Page</title>
+        <use_seo_script>false</use_seo_script>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=a6a7adf197d9d110fc70b998c253af24"/>
+</record_update>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="DELETE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Training - Container 1</name>
+        <order>1</order>
+        <sp_page display_value="training">8d86b02397d15110fc70b998c253afe0</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 18:57:47</sys_created_on>
+        <sys_id>e2af21b797559110fc70b998c253afb0</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Training - Container 1</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_container_e2af21b797559110fc70b998c253afb0</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 19:00:21</sys_updated_on>
+        <title/>
+        <width>container-fluid</width>
+    </sp_container>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sp_container_e2af21b797559110fc70b998c253afb0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container"><sp_container action="INSERT_OR_UPDATE"><background_color/><background_image/><background_style>default</background_style><bootstrap_alt>false</bootstrap_alt><class_name/><container_class_name/><name>Training - Container 1</name><order>1</order><sp_page display_value="training">8d86b02397d15110fc70b998c253afe0</sp_page><subheader>false</subheader><sys_class_name>sp_container</sys_class_name><sys_created_by>abhrajyoti.kanrar</sys_created_by><sys_created_on>2022-08-20 18:57:47</sys_created_on><sys_id>e2af21b797559110fc70b998c253afb0</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Training - Container 1</sys_name><sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package><sys_policy/><sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope><sys_update_name>sp_container_e2af21b797559110fc70b998c253afb0</sys_update_name><sys_updated_by>abhrajyoti.kanrar</sys_updated_by><sys_updated_on>2022-08-20 19:00:21</sys_updated_on><title/><width>container-fluid</width></sp_container></record_update>]]></payload>
+        <payload_hash>-2144209453</payload_hash>
+        <record_name>Training - Container 1</record_name>
+        <reverted_from/>
+        <source>1ad585b99759d110fc70b998c253af77</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 19:00:21</sys_created_on>
+        <sys_id>404031f797559110fc70b998c253af50</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182bca0a7a50000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 19:00:21</sys_updated_on>
+        <type>Container</type>
+        <update_guid>884031f748559110de0f16e93fe6214f</update_guid>
+        <update_guid_history>884031f748559110de0f16e93fe6214f:-2144209453,0320fd7700559110601394ee40267bec:-1544047244,62af21b78f559110b60f6dcab73944b2:-1201977775</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Training - Container 1">4e128ef797959110fc70b998c253af11</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 20:18:19</sys_created_on>
+        <sys_db_object display_value="" name="sp_container">sp_container</sys_db_object>
+        <sys_id>a71b42e23e6e461c90ccc84006d99c71</sys_id>
+        <sys_metadata>e2af21b797559110fc70b998c253afb0</sys_metadata>
+        <sys_name>Training - Container 1</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sp_container_e2af21b797559110fc70b998c253afb0</sys_update_name>
+        <sys_update_version display_value="sp_container_e2af21b797559110fc70b998c253afb0">404031f797559110fc70b998c253af50</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

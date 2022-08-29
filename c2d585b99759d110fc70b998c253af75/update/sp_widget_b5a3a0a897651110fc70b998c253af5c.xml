@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $window) {
+  /* widget controller */
+  var c = this;
+	if(c.data.training == "" || c.data.training == undefined){
+		var homepage = 'https://' + $window.location.host + "/tc";
+		$window.location.href = homepage;
+	}
+	
+	$scope.submitFeedback = function(){
+		if(c.data.feedbackText != "" && c.data.feedbackText != undefined){
+			c.server.get({
+				action: "update_feedback",
+				feedback: c.data.feedbackText
+			}).then(function(response){
+				c.data.feedback_submitted = true;
+			});
+		}
+		
+		c.data.feedback_submitted = true;
+	}
+	
+	$scope.gotoHomepage = function(){
+		var homepage = 'https://' + $window.location.host + "/tc";
+		$window.location.href = homepage;
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.feedback-label{
+	font-weight: 500;
+  font-size: 4rem;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>feedback</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Feedback</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var trainingSysId = $sp.getParameter('sys_id');
+  var currentUser = gs.getUserID();
+	data.feedback_submitted = false;
+	data.training = trainingSysId;
+	
+	
+	var grUT = new GlideRecord("x_509953_tc_user_training_data");
+	grUT.addQuery("user", currentUser);
+	grUT.addQuery("training", trainingSysId);
+	grUT.query();
+	if(grUT.next()){
+		if(grUT.feedback != ""){
+			data.feedback_submitted = true;
+		}
+	}
+	
+	if(input && input.action == "update_feedback"){
+		var grFeedback = new GlideRecord("x_509953_tc_user_training_data");
+		grFeedback.addQuery("user", currentUser);
+		grFeedback.addQuery("training", trainingSysId);
+		grFeedback.query();
+		if(grFeedback.next()){	
+			grFeedback.feedback = input.feedback;
+			grFeedback.update();
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-22 21:21:08</sys_created_on>
+        <sys_id>b5a3a0a897651110fc70b998c253af5c</sys_id>
+        <sys_name>Feedback</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_b5a3a0a897651110fc70b998c253af5c</sys_update_name>
+        <template><![CDATA[<div style="text-align: center;">
+  <div ng-if="c.data.feedback_submitted == false" style="margin-top: 7rem;">
+    <label class="feedback-label">Your feedback matters!</label>
+    <br/><br/>
+    <textarea class="form-control" rows="3" style="resize: none;" ng-model="c.data.feedbackText" placeholder="Feedback goes here..."></textarea>
+    <br/><br/><br/><br/>
+    <button type="button" class="btn btn-primary" ng-click="submitFeedback();">SUBMIT</button>
+  </div>
+  
+  <div ng-if="c.data.feedback_submitted" style="margin-top: 7rem;">
+    <img src="15fa14b097255110fc70b998c253af12.iix" width="88.9" height="89.7" alt="OK"/>
+    <br/>
+    <label class="feedback-label">Thank you!</label>
+    <br/><br/><br/><br/><br/>
+    <button type="button" class="btn btn-primary" ng-click="gotoHomepage();">
+      <span class="glyphicon glyphicon-arrow-left"></span>
+      &nbsp;BACK TO HOMEPAGE
+    </button>
+  </div>
+	
+</div>]]></template>
+    </sp_widget>
+</record_update>

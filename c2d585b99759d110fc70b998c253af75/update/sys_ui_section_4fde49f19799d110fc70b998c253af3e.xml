@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="4fde49f19799d110fc70b998c253af3e" sys_domain="global" table="x_509953_tc_user_training_data" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>user</element>
+            <position>0</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>eb6a280197259110fc70b998c253af3a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>training</element>
+            <position>1</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>ef6a280197259110fc70b998c253af3a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>started_on</element>
+            <position>2</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>f36a280197259110fc70b998c253af3b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>completed_on</element>
+            <position>3</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>f76a280197259110fc70b998c253af3b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>4</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>fb6a280197259110fc70b998c253af3b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>progress_status</element>
+            <position>5</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>ff6a280197259110fc70b998c253af3b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>progress_percentage</element>
+            <position>6</position>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-24 11:07:42</sys_created_on>
+            <sys_id>f36a280197259110fc70b998c253af3c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_509953_tc_user_training_data" sys_domain="global" view="Default view">4fde49f19799d110fc70b998c253af3e</sys_ui_section>
+            <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+            <sys_updated_on>2022-08-24 11:07:42</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_509953_tc_user_training_data</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+            <sys_created_on>2022-08-14 11:26:38</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4fde49f19799d110fc70b998c253af3e</sys_id>
+            <sys_name>x_509953_tc_user_training_data</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+            <sys_update_name>sys_ui_section_4fde49f19799d110fc70b998c253af3e</sys_update_name>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

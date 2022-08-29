@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Training View - Container 2</name>
+        <order>2</order>
+        <sp_page display_value="training_view">7fdeaa8297dd1510fc70b998c253afb2</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-15 16:38:43</sys_created_on>
+        <sys_id>28ef974297915510fc70b998c253afec</sys_id>
+        <sys_name>Training View - Container 2</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_container_28ef974297915510fc70b998c253afec</sys_update_name>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_509953_tc.TrainingCenterUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>TrainingCenterUtils</name>
+        <script><![CDATA[var TrainingCenterUtils = Class.create();
+TrainingCenterUtils.prototype = {
+
+    initialize: function() {
+
+    },
+
+    updateUserTrainingStatus: function(user, training, action) {
+        if (action == "registration") {
+            return this.createRegistration(user, training);
+        } else if (action == "start") {
+            return this.updateRegistrationStatus(user, training, "in_progress");
+        } else if (action == "cancel") {
+            this.cancelRegistration(user, training);
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    createRegistration: function(user, training) {
+        this.cancelRegistration(user, training);
+
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        grUT.initialize();
+        grUT.user = user;
+        grUT.training = training;
+        grUT.progress_status = "registered";
+        if (grUT.insert())
+            return true;
+        else
+            return false;
+    },
+
+    updateRegistrationStatus: function(user, training, status) {
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        grUT.addQuery("user", user);
+        grUT.addQuery("training", training);
+        grUT.query();
+        if (grUT.next()) {
+            grUT.progress_status = status;
+            grUT.update();
+            return true;
+        } else {
+            return false;
+        }
+    },
+
+    cancelRegistration: function(user, training) {
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        grUT.addQuery("user", user);
+        grUT.addQuery("training", training);
+        grUT.query();
+        if (grUT.next())
+            grUT.deleteRecord();
+    },
+
+
+
+    getTrainingModuleStatus: function(training, user) {
+        var modules = this.getModuleDetails(training);
+
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        grUT.addQuery("user", user);
+        grUT.addQuery("training", training);
+        grUT.query();
+        if (grUT.next()) {
+            if (grUT.progress_status == "registered" && modules[0]) {
+                modules[0].active = true;
+                return modules;
+            } else if (grUT.progress_status == "in_progress") {
+                modules = this.getActiveModuleUpdated(grUT, modules);
+
+                modules = this.getCompletedModuleUpdated(grUT, modules);
+            }
+        }
+
+        return modules;
+    },
+
+    getModuleDetails: function(training) {
+        var modules = [];
+        var grModules = new GlideRecord("x_509953_tc_training_modules");
+        grModules.addQuery("training", training);
+        grModules.addQuery("active", "true");
+        grModules.orderBy("sequence");
+        grModules.query();
+        while (grModules.next()) {
+            modules.push({
+                "sys_id": grModules.sys_id.toString(),
+                "name": grModules.module_name.toString(),
+                "sequence": grModules.sequence.toString(),
+                "active": false,
+                "module_completed": false
+            });
+        }
+
+        return modules;
+    },
+
+    getActiveModuleUpdated: function(grUT, modules) {
+        var grAssignedModules = new GlideRecord("x_509953_tc_m2m_assigned_modules");
+        grAssignedModules.addQuery("user_training_record", grUT.sys_id);
+        grAssignedModules.addQuery("progress", "registered");
+        grAssignedModules.orderBy("sequence");
+        grAssignedModules.setLimit(1);
+        grAssignedModules.query();
+        if (grAssignedModules.next()) {
+            for (var item in modules) {
+                if (grAssignedModules.training_module.toString() == modules[item].sys_id) {
+                    modules[item].active = true;
+                    break;
+                }
+            }
+        }
+
+        return modules;
+    },
+
+    getCompletedModuleUpdated: function(grUT, modules) {
+        var grAssignedModules = new GlideRecord("x_509953_tc_m2m_assigned_modules");
+        grAssignedModules.addQuery("user_training_record", grUT.sys_id);
+        grAssignedModules.addQuery("progress", "completed");
+        grAssignedModules.orderBy("sequence");
+        grAssignedModules.query();
+        while (grAssignedModules.next()) {
+            for (var item in modules) {
+                if (grAssignedModules.training_module.toString() == modules[item].sys_id) {
+                    modules[item].module_completed = true;
+                }
+            }
+        }
+
+        return modules;
+    },
+
+    updateProgressPercent: function(utSysId) {
+        var grCompleted = new GlideAggregate("x_509953_tc_m2m_assigned_modules");
+        grCompleted.addQuery("progress", "completed");
+        grCompleted.addQuery("user_training_record", utSysId);
+        grCompleted.addAggregate("COUNT");
+        grCompleted.query();
+        grCompleted.next();
+        var completedCount = grCompleted.getAggregate("COUNT");
+
+        var grTotal = new GlideAggregate("x_509953_tc_m2m_assigned_modules");
+        grTotal.addQuery("user_training_record", utSysId);
+        grTotal.addAggregate("COUNT");
+        grTotal.query();
+        grTotal.next();
+        var totalCount = grTotal.getAggregate("COUNT");
+
+        var progress = Math.round((completedCount / totalCount) * 100);
+
+        var grUT = new GlideRecord("x_509953_tc_user_training_data");
+        if (grUT.get(utSysId)) {
+            grUT.progress_percentage = progress + "%";
+
+            if (progress == 100)
+                grUT.progress_status = "completed";
+
+            grUT.update();
+        }
+
+        return progress;
+    },
+
+    updateModuleRegistration: function(moduleSysId, utSysId) {
+        var grAssignedModule = new GlideRecord("x_509953_tc_m2m_assigned_modules");
+        if (moduleSysId != "") {
+            grAssignedModule.addQuery("training_module", moduleSysId);
+        } else {
+            grAssignedModule.addQuery("progress", "registered");
+        }
+        grAssignedModule.addQuery("user_training_record", utSysId);
+        grAssignedModule.query();
+        if (grAssignedModule.next()) {
+            grAssignedModule.progress = "completed";
+            grAssignedModule.update();
+
+            return true;
+        }
+        return false;
+    },
+
+    type: 'TrainingCenterUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 07:04:48</sys_created_on>
+        <sys_id>5b290b2797d95110fc70b998c253af4a</sys_id>
+        <sys_name>TrainingCenterUtils</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sys_script_include_5b290b2797d95110fc70b998c253af4a</sys_update_name>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($rootScope, $scope, $timeout) {
+  /* widget controller */
+  var c = this;
+	
+	var modulesSysIds = [];
+  var activeModuleIndex = -1;
+	var previousModuleIndex = -1;
+	var sharedData = {};
+	
+	for(var item in c.data.training_modules){
+		modulesSysIds.push(c.data.training_modules[item].sys_id);
+	
+		if(c.data.training_modules[item].active){
+			activeModuleIndex = item;
+			if(activeModuleIndex > 0)
+				previousModuleIndex = activeModuleIndex - 1;
+		}
+	}
+	
+	sharedData = {
+		"listModule": modulesSysIds,
+		"activeModuleIndex": activeModuleIndex,
+		"previousModuleIndex": previousModuleIndex,
+		"updateStatus": false
+	};
+	
+	$timeout(function(){
+		$rootScope.$broadcast('sharedData', sharedData);
+	}, 1000);
+	
+	
+	
+	$rootScope.$on("sharedData", function(event, data) {
+		sharedData = data;
+		
+		if(sharedData.updateStatus){
+			c.server.get({
+				action: "update_module_registration",
+				module_sys_id: sharedData.listModule[sharedData.previousModuleIndex].toString()
+			}).then(function(response) {
+				updateView(response.data.training_modules, sharedData.listModule[sharedData.activeModuleIndex].toString());
+				
+				if(response.data.calculate_progress.updateRequired){
+					$rootScope.$broadcast('update_progress', response.data.calculate_progress);
+				}
+			});
+		} else{
+			updateView(c.data.training_modules, sharedData.listModule[sharedData.activeModuleIndex].toString());
+		}
+  });
+	
+	
+	function updateView(moduleList, activeSysId){
+		for(var item in moduleList){
+			if(moduleList[item].active){
+				moduleList[item].active = false;
+				$("#" + moduleList[item].sys_id).children("div").removeClass("active");
+			}
+			if(moduleList[item].sys_id == activeSysId){
+				moduleList[item].active = true;
+				$("#" + moduleList[item].sys_id).children("div").addClass("active");
+			}
+		}
+
+		c.data.training_modules = moduleList;
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+
+body {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 25rem;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 25rem;
+  width: 17%;
+  height: 100%;
+  margin-left: -25rem;
+  overflow-y: auto;
+  background: #0a1929;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  background-color: #263238;
+  font-size: 2rem;
+  line-height: 5.2rem;
+  text-align: center;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+#sidebar header a:hover {
+  color: #fff;
+}
+
+#sidebar .nav div{
+  background: none;
+  border-bottom: 0.1rem solid #455A64;
+  color: #a6aeb7;
+  font-size: 1.4rem;
+  padding: 1.6rem 2.4rem;
+  cursor: pointer;
+}
+
+#sidebar .nav div:hover{
+  background: none;
+  color: #ECEFF1;
+}
+
+div.active{
+	background-color: #132f4c!important; 
+  color: #5fa9f2!important;
+}
+
+p.completed-identity{
+	color: white; 
+  right: 1rem; 
+  position: absolute; 
+  top: 50%; 
+  -ms-transform: translateY(-50%); 
+  transform: translateY(-50%);
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>training_module_navigation</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Training Module Navigation</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var trainingSysId = $sp.getParameter('sys_id');
+    var currentUser = gs.getUserID();
+    data.training_modules = getUpdatedModules(trainingSysId, currentUser);
+	
+		
+		if(input && input.action == "update_module_registration"){
+			var grUT = new GlideRecord("x_509953_tc_user_training_data");
+			grUT.addQuery("user", currentUser);
+			grUT.addQuery("training", trainingSysId);
+			grUT.query();
+			if(grUT.next()){
+					var isUpdated = new x_509953_tc.TrainingCenterUtils().updateModuleRegistration(input.module_sys_id, grUT.sys_id);
+					if(isUpdated){
+						data.calculate_progress = {
+							"updateRequired": true,
+							"utSysId": grUT.sys_id.toString()
+						};
+					}
+				}
+			
+			data.training_modules = getUpdatedModules(trainingSysId, currentUser);
+		}
+	
+		function getUpdatedModules(trainingSysId, currentUser){
+			return new x_509953_tc.TrainingCenterUtils().getTrainingModuleStatus(trainingSysId, currentUser);
+		}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 18:54:15</sys_created_on>
+        <sys_id>eede213797159110fc70b998c253affd</sys_id>
+        <sys_name>Training Module Navigation</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_eede213797159110fc70b998c253affd</sys_update_name>
+        <template><![CDATA[<div id="viewport">
+  <div id="sidebar">
+    <header>
+      Modules
+    </header>
+    <ul class="nav">
+      <li id="{{::item.sys_id}}" ng-repeat="item in c.data.training_modules">
+        <div ng-if="::item.active" class="active">
+          {{::item.sequence}}. {{::item.name}}
+        </div>
+      
+        <p ng-if="::item.module_completed" class="completed-identity">
+        	&#10004;
+        </p>
+        <div ng-if="::item.active == false">
+          {{::item.sequence}}. {{::item.name}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

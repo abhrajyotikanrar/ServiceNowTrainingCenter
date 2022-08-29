@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.details{
+	padding: 10px;
+  font-size: 1.75rem;
+}
+
+.modules{
+  font-size: 1.75rem;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>training_details</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Training Details</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+    var trainingSysId = $sp.getParameter('sys_id');
+    data.training = getTrainingDetails(trainingSysId);
+
+    function getTrainingDetails(sysId) {
+        var grTraining = new GlideRecord("x_509953_tc_training");
+        grTraining.addQuery("sys_id", sysId);
+        grTraining.addQuery("active", "true");
+        grTraining.addQuery("status", "published");
+        grTraining.query();
+        if (grTraining.next()) {
+            return {
+                "sys_id": grTraining.sys_id.toString(),
+                "modules": getActiveModules(grTraining.sys_id),
+                "details": grTraining.details.toString()
+            };
+        } else
+            return 0;
+    }
+
+    function getActiveModules(trainingSysId) {
+        var modules = [];
+        var grModules = new GlideRecord("x_509953_tc_training_modules");
+        grModules.addQuery("training", trainingSysId);
+        grModules.addQuery("active", "true");
+        grModules.orderBy("sequence");
+        grModules.query();
+        while (grModules.next()) {
+            modules.push(grModules.module_name.toString());
+        }
+
+        return modules;
+    }
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-15 16:41:28</sys_created_on>
+        <sys_id>a480278297915510fc70b998c253afcb</sys_id>
+        <sys_name>Training Details</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_a480278297915510fc70b998c253afcb</sys_update_name>
+        <template><![CDATA[<div ng-if="c.data.training != 0">
+	<div class="details">
+      <div ng-bind-html="::c.data.training.details"></div>
+  </div>
+  <div class="modules">
+    <p class="list-group-item" style="background-color: grey; color: white;">
+      <b>Modules</b>
+    </p>
+    <p ng-if="c.data.training.modules.length == 0" class="list-group-item">
+     	No modules are available for this training
+    </p>
+    <ul ng-if="c.data.training.modules.length > 0" class="list-group">
+      <li ng-repeat="item in c.data.training.modules" class="list-group-item">
+        {{::item}}
+      </li>
+    </ul>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

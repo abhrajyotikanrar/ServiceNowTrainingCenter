@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column">
+    <sp_column action="DELETE">
+        <class_name/>
+        <order>3</order>
+        <size>4</size>
+        <size_lg/>
+        <size_sm/>
+        <size_xs/>
+        <sp_row display_value="1">fa42cef797959110fc70b998c253af06</sp_row>
+        <sys_class_name>sp_column</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 20:19:12</sys_created_on>
+        <sys_id>b642cef797959110fc70b998c253af0c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>3</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_column_b642cef797959110fc70b998c253af0c</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 20:19:12</sys_updated_on>
+    </sp_column>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sp_column_b642cef797959110fc70b998c253af0c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_column"><sp_column action="INSERT_OR_UPDATE"><class_name/><order>3</order><size>4</size><size_lg/><size_sm/><size_xs/><sp_row display_value="1">fa42cef797959110fc70b998c253af06</sp_row><sys_class_name>sp_column</sys_class_name><sys_created_by>abhrajyoti.kanrar</sys_created_by><sys_created_on>2022-08-20 20:19:12</sys_created_on><sys_id>b642cef797959110fc70b998c253af0c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>3</sys_name><sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package><sys_policy/><sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope><sys_update_name>sp_column_b642cef797959110fc70b998c253af0c</sys_update_name><sys_updated_by>abhrajyoti.kanrar</sys_updated_by><sys_updated_on>2022-08-20 20:19:12</sys_updated_on></sp_column></record_update>]]></payload>
+        <payload_hash>867098114</payload_hash>
+        <record_name>3</record_name>
+        <reverted_from/>
+        <source>1ad585b99759d110fc70b998c253af77</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 20:19:12</sys_created_on>
+        <sys_id>be42cef797959110fc70b998c253af0d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182bce8d6b50000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 20:19:12</sys_updated_on>
+        <type>Column</type>
+        <update_guid>f642cef77d95911050e6dcca6ea1df0d</update_guid>
+        <update_guid_history>f642cef77d95911050e6dcca6ea1df0d:867098114</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="3">1852cef797959110fc70b998c253af22</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 20:19:17</sys_created_on>
+        <sys_db_object display_value="" name="sp_column">sp_column</sys_db_object>
+        <sys_id>003596ffe7e04cedb24bd39d8a083661</sys_id>
+        <sys_metadata>b642cef797959110fc70b998c253af0c</sys_metadata>
+        <sys_name>3</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sp_column_b642cef797959110fc70b998c253af0c</sys_update_name>
+        <sys_update_version display_value="sp_column_b642cef797959110fc70b998c253af0c">be42cef797959110fc70b998c253af0d</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

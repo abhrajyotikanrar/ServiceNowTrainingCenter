@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>previous_training_module</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Previous Training Module</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 23:32:23</sys_created_on>
+        <sys_id>708eeeff97199110fc70b998c253af1b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Previous Training Module</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_708eeeff97199110fc70b998c253af1b</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 23:32:23</sys_updated_on>
+        <template><![CDATA[<div><!-- your widget template --></div>]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sp_widget_708eeeff97199110fc70b998c253af1b</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css/&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;previous_training_module&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Previous Training Module&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;abhrajyoti.kanrar&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-08-20 23:32:23&lt;/sys_created_on&gt;&lt;sys_id&gt;708eeeff97199110fc70b998c253af1b&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_name&gt;Previous Training Module&lt;/sys_name&gt;&lt;sys_package display_value="Training Center" source="x_509953_tc"&gt;c2d585b99759d110fc70b998c253af75&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Training Center"&gt;c2d585b99759d110fc70b998c253af75&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_708eeeff97199110fc70b998c253af1b&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;abhrajyoti.kanrar&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-08-20 23:32:23&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;&lt;!-- your widget template --&gt;&lt;/div&gt;]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-773639369</payload_hash>
+        <record_name>Previous Training Module</record_name>
+        <reverted_from/>
+        <source>1ad585b99759d110fc70b998c253af77</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 23:32:23</sys_created_on>
+        <sys_id>b88e62b397599110fc70b998c253af12</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182bd99b5910000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-20 23:32:23</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>b48eeeff7f199110960cd1a2bb693c1c</update_guid>
+        <update_guid_history>b48eeeff7f199110960cd1a2bb693c1c:-773639369</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Previous Training Module">d2395d8097e1d110fc70b998c253af6b</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 11:58:14</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>89d2358a9a754c6e9e6d123d8b29c164</sys_id>
+        <sys_metadata>708eeeff97199110fc70b998c253af1b</sys_metadata>
+        <sys_name>Previous Training Module</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sp_widget_708eeeff97199110fc70b998c253af1b</sys_update_name>
+        <sys_update_version display_value="sp_widget_708eeeff97199110fc70b998c253af1b">b88e62b397599110fc70b998c253af12</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

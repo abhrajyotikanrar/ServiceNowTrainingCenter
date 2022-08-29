@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="DELETE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>@keyframes growProgressBar {
+  0%, 33% { --pgPercentage: 0; }
+  100% { --pgPercentage: var(--value); }
+}
+
+@property --pgPercentage {
+  syntax: '&lt;number&gt;';
+  inherits: false;
+  initial-value: 0;
+}
+
+div[role="progressbar"] {
+  --size: 5rem;
+  --fg: #4a148c;
+  --bg: #def;
+  --pgPercentage: var(--value);
+  animation: growProgressBar 3s 1 forwards;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: 
+    radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
+    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+  font-family: Helvetica, Arial, sans-serif;
+  /*font-size: calc(var(--size) / 5);*/
+  font-size: 1.65rem;
+  color: var(--fg);
+}
+
+div[role="progressbar"]::before {
+  counter-reset: percentage var(--value);
+  content: counter(percentage) '%';
+}
+
+/* demo */
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>current_training_progress</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Current Training Progress</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-20 23:30:43</sys_created_on>
+        <sys_id>582eaa7397599110fc70b998c253af00</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>Current Training Progress</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_582eaa7397599110fc70b998c253af00</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-21 10:10:18</sys_updated_on>
+        <template><![CDATA[<div>
+  <div style="right: 1rem; top: 50%; width: 100%; ">
+    <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:63; margin-left: auto; margin-right: 0;">
+    </div>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sp_widget_582eaa7397599110fc70b998c253af00</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sp_widget"&gt;&lt;sp_widget action="INSERT_OR_UPDATE"&gt;&lt;category&gt;custom&lt;/category&gt;&lt;client_script&gt;&lt;![CDATA[api.controller=function() {  /* widget controller */  var c = this;};]]&gt;&lt;/client_script&gt;&lt;controller_as&gt;c&lt;/controller_as&gt;&lt;css&gt;@keyframes growProgressBar {
+  0%, 33% { --pgPercentage: 0; }
+  100% { --pgPercentage: var(--value); }
+}
+
+@property --pgPercentage {
+  syntax: '&amp;lt;number&amp;gt;';
+  inherits: false;
+  initial-value: 0;
+}
+
+div[role="progressbar"] {
+  --size: 5rem;
+  --fg: #4a148c;
+  --bg: #def;
+  --pgPercentage: var(--value);
+  animation: growProgressBar 3s 1 forwards;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: 
+    radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0),
+    conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+  font-family: Helvetica, Arial, sans-serif;
+  /*font-size: calc(var(--size) / 5);*/
+  font-size: 1.65rem;
+  color: var(--fg);
+}
+
+div[role="progressbar"]::before {
+  counter-reset: percentage var(--value);
+  content: counter(percentage) '%';
+}
+
+/* demo */
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}&lt;/css&gt;&lt;data_table&gt;sp_instance&lt;/data_table&gt;&lt;demo_data/&gt;&lt;description/&gt;&lt;docs/&gt;&lt;field_list/&gt;&lt;has_preview&gt;false&lt;/has_preview&gt;&lt;id&gt;current_training_progress&lt;/id&gt;&lt;internal&gt;false&lt;/internal&gt;&lt;link&gt;&lt;![CDATA[function link(scope, element, attrs, controller) {  }]]&gt;&lt;/link&gt;&lt;name&gt;Current Training Progress&lt;/name&gt;&lt;option_schema/&gt;&lt;public&gt;false&lt;/public&gt;&lt;roles/&gt;&lt;script&gt;&lt;![CDATA[(function() {  /* populate the 'data' object */  /* e.g., data.table = $sp.getValue('table'); */})();]]&gt;&lt;/script&gt;&lt;servicenow&gt;false&lt;/servicenow&gt;&lt;sys_class_name&gt;sp_widget&lt;/sys_class_name&gt;&lt;sys_created_by&gt;abhrajyoti.kanrar&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2022-08-20 23:30:43&lt;/sys_created_on&gt;&lt;sys_id&gt;582eaa7397599110fc70b998c253af00&lt;/sys_id&gt;&lt;sys_mod_count&gt;35&lt;/sys_mod_count&gt;&lt;sys_name&gt;Current Training Progress&lt;/sys_name&gt;&lt;sys_package display_value="Training Center" source="x_509953_tc"&gt;c2d585b99759d110fc70b998c253af75&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Training Center"&gt;c2d585b99759d110fc70b998c253af75&lt;/sys_scope&gt;&lt;sys_update_name&gt;sp_widget_582eaa7397599110fc70b998c253af00&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;abhrajyoti.kanrar&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2022-08-21 10:10:18&lt;/sys_updated_on&gt;&lt;template&gt;&lt;![CDATA[&lt;div&gt;
+  &lt;div style="right: 1rem; top: 50%; width: 100%; "&gt;
+    &lt;div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:63; margin-left: auto; margin-right: 0;"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+]]&gt;&lt;/template&gt;&lt;/sp_widget&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-302999190</payload_hash>
+        <record_name>Current Training Progress</record_name>
+        <reverted_from/>
+        <source>1ad585b99759d110fc70b998c253af77</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 10:10:18</sys_created_on>
+        <sys_id>158085c89761d110fc70b998c253af0c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182bfe1bcf90000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-08-21 10:10:18</sys_updated_on>
+        <type>Widget</type>
+        <update_guid>5d8085c87361d110c77f56cba932790b</update_guid>
+        <update_guid_history>5d8085c87361d110c77f56cba932790b:-302999190,41ff7c886c61d110fce08879c977c21c:1297151995,6c5ffc847761d11064366b5dcb2c5e6b:-2141300457,b6befc84f861d110054a6a6683ed4e0e:545379775,a43c30448661d1104820fd1d6afe4e6b:-396739635,021c3c84e261d1102bcbc8c3fda407fb:1015201252,5cabb4847c61d110012e772f7d696245:-417558101,fb7bf840b961d11099d842a1280c6b33:380122800,b3e7fa7b28599110da258cc1550864bd:1507751630,be07be3bfd599110ecc4e198b00f3fb5:-1130107409,bc76be7bcf599110aaaa4b9789e5f077:-600903293,7146b67b9e599110e15f4bd6ce36f92d:-41110584,3726ba7bbc5991109c9dc927c5da1f19:-1408828620,d2f5fef72459911039436d22006fc505:1895466877,1cd5323be659911032b6afaf57254b88:1042184224,c6a5b27bc95991102c4042a86d555d16:157061221,c5557ef7d4599110934535c1bb7529b7:894258230,5624b6f747599110cb115fffe2ba8466:-125550593,32f3f6f7c859911044bc967e9e5cf977:-1129533761,bad376f735599110db15cbbc615221c1:1436275406,f9c336f7b259911098b59422e563758c:856332185,8ba3b6b718599110fff2d6ec3d5bccf4:-1444904187,5b62fe77d4599110fc88d171fe7ac49b:457455436,2242be37345991108bc50427942084ef:-860335411,01027a77ed59911058107440c0dfee6f:-1323432159,50e1be3791599110d697db09cad2e8e9:-1518796352,eec1bef39a599110a1c7a70ee597aa7e:55729845,4451be37b35991108661404db21ba2e4:-1588085498,e7e0f637f15991101a8a4dfa88259b92:-1395724404,edd0b23790599110304528b23c45a3ac:-999968342,65c0b6370f599110d77cb82ddd85424c:401417900,b690b237205991100a5daa3533d2c4bb:1083836620,5180bef3c7599110c6365c4b698c1712:-1737636436,bc507ef3a85991101ca1d1b12626a6ca:-1901622868,a3103af3325991105ad48803fd2f9823:1033052580,9c2eaa733c599110710f8771ac6b2401:523561938</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Current Training Progress">8b26c90c9761d110fc70b998c253af38</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 10:34:59</sys_created_on>
+        <sys_db_object display_value="" name="sp_widget">sp_widget</sys_db_object>
+        <sys_id>2fe82398ef574d839c2f1923c58810c9</sys_id>
+        <sys_metadata>582eaa7397599110fc70b998c253af00</sys_metadata>
+        <sys_name>Current Training Progress</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sp_widget_582eaa7397599110fc70b998c253af00</sys_update_name>
+        <sys_update_version display_value="sp_widget_582eaa7397599110fc70b998c253af00">158085c89761d110fc70b998c253af0c</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="9f1685b99759d110fc70b998c253af7e" label="Training Modules" max_length="40" name="x_509953_tc_training_modules" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Content" mandatory="true" max_length="8000" name="content" type="html"/>
+        <element display="true" label="Module Name" mandatory="true" max_length="100" name="module_name" type="string"/>
+        <element label="Sequence" mandatory="true" max_length="40" name="sequence" type="integer"/>
+        <element label="Training" mandatory="true" max_length="32" name="training" reference="x_509953_tc_training" type="reference"/>
+        <index name="index">
+            <element name="training"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 10:49:12</sys_created_on>
+        <sys_id>7246cdb99759d110fc70b998c253afa0</sys_id>
+        <sys_name>x_509953_tc_training_modules.x_509953_tc.training_modules_user</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_security_acl display_value="x_509953_tc_training_modules">7a46cdb99759d110fc70b998c253af9d</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_7246cdb99759d110fc70b998c253afa0</sys_update_name>
+        <sys_user_role display_value="x_509953_tc.training_modules_user" name="x_509953_tc.training_modules_user">7e46017d9719d110fc70b998c253afc7</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

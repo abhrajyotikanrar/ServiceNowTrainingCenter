@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_analytics_bucket">
+    <sys_analytics_bucket action="INSERT_OR_UPDATE">
+        <analytics_channel display_value="web">6496ef61c7001010393d265c95c260b9</analytics_channel>
+        <application_name>Training Center</application_name>
+        <bucket_document_id>b8c95dfd9799d110fc70b998c253af53</bucket_document_id>
+        <bucket_metadata/>
+        <bucket_table_name>sp_portal</bucket_table_name>
+        <bucket_type>service_portal</bucket_type>
+        <enable_unauthenticated_user_tracking>false</enable_unauthenticated_user_tracking>
+        <enabled>true</enabled>
+        <internal_name_for_index>x_509953_tc.sp_portal.b8c95dfd9799d110fc70b998c253af53</internal_name_for_index>
+        <sys_class_name>sys_analytics_bucket</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-14 12:18:06</sys_created_on>
+        <sys_id>89aa153197d9d110fc70b998c253afec</sys_id>
+        <sys_name>Training Center</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sys_analytics_bucket_89aa153197d9d110fc70b998c253afec</sys_update_name>
+    </sys_analytics_bucket>
+</record_update>

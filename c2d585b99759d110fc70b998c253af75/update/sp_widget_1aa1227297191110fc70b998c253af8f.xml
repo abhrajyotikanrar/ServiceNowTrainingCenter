@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller = function($rootScope, $scope, spModal, $http, $window, spUtil) {
+    /* widget controller */
+    var c = this;
+    $('.toast').hide();
+    $('#msgBox').hide();
+    var trainingUrl = 'https://' + $window.location.host + "/tc?id=training&sys_id=" + c.data.training_sysId;
+    var trainingDisplayUrl = 'https://' + $window.location.host + "/tc?id=training_view&sys_id=" + c.data.training_sysId;
+
+    $scope.updateStatus = function(action) {
+        var allowUpdate = false;
+
+        if (action == "resume") {
+            $window.location.href = trainingUrl;
+        } else if (action == "cancel") {
+            spModal.open({
+                title: "Unregister this training?",
+                message: "Unregistering the training will delete all your progress. Do you still want to unregister?"
+            }).then(function(confirmation) {
+                if (confirmation) {
+                    updateStatusToServer(action);
+                }
+            });
+        } else if (action == "registration" || action == "start") {
+            updateStatusToServer(action);
+        }
+    }
+
+    $scope.shareTraining = function() {
+        var referredEmail = c.data.referred_email;
+
+        if (referredEmail == undefined || referredEmail == "") {
+            c.data.msg = "Please provide a valid email address.";
+            $('#msgBox').show();
+            return;
+        }
+        c.server.get({
+            action: "share_training",
+            referred_email: referredEmail
+        }).then(function(response) {
+            if (!response.data.is_referred_email_available) {
+                c.data.msg = "The email is not available at your organization.";
+                $('#msgBox').show();
+                return;
+            }
+
+            $('#shareModal').modal('hide');
+            showToast("Success", "Thank you! The training has been shared with " + c.data.referred_email + ".", 5000);
+            c.data.referred_email = "";
+        });
+    }
+
+    $scope.closeToast = function() {
+        c.data.toast_title = "";
+        c.data.toast_body = "";
+        $('.toast').hide();
+    }
+
+    $scope.removeErrorMsg = function() {
+        c.data.msg = "";
+        $('#msgBox').hide();
+    }
+
+    function updateStatusToServer(action) {
+        c.server.get({
+            action: action
+        }).then(function(response) {
+            var answer = response.data.answer;
+            if (answer && action == "registration") {
+                showToast("Success", "Congrats! You have been registered for this training successfully.", 5000);
+                c.data.training_status = "registered";
+            } else if (answer && action == "start") {
+                $window.location.href = trainingUrl;
+            } else if (answer && action == "cancel") {
+                showToast("Success", "You have been unregistered from this training!", 5000);
+                c.data.training_status = "not_registered";
+            }
+        });
+    }
+
+    function showToast(title, body, timer) {
+        c.data.toast_title = title;
+        c.data.toast_body = body;
+        $('.toast').show(0).delay(timer).hide(0);
+    }
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.main-div{
+	/*border: 2px solid grey; */
+  border-radius: 0.5rem; 
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.toast{
+		position: fixed; 
+  	top: 8rem; 
+  	right: 2rem; 
+  	border: 0.1rem solid rgba(0,0,0,.1); 
+  	border-radius: 0.25rem;
+  	max-width: 30rem;
+  	background-color: white;
+}
+.toast-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: #6c757d;
+    background-color: #e1e2e3;
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+  	width: 100%;
+  	font-size: 1.5rem;
+}
+.mr-auto{
+		margin-right: auto!important;
+}
+.toast-body {
+    padding: 0.75rem;
+  	font-size: 1.5rem;
+}
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>training_activity</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Training Activity</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+    /* populate the 'data' object */
+    /* e.g., data.table = $sp.getValue('table'); */
+
+    data.training_sysId = $sp.getParameter('sys_id');
+    data.current_user = gs.getUserID();
+    data.training_status = getTrainingStatus(data.training_sysId, data.current_user);
+
+
+
+    if (input) {
+        var validTrainingActions = ["registration", "start", "cancel"];
+        if (validTrainingActions.indexOf(input.action) > -1) {
+            data.answer = new x_509953_tc.TrainingCenterUtils().updateUserTrainingStatus(data.current_user, data.training_sysId, input.action);
+            input.action = undefined;
+        } else if (input.action == "share_training") {
+            var grUser = new GlideRecord("sys_user");
+            grUser.addQuery("active", "true");
+            grUser.addQuery("email", input.referred_email);
+            grUser.query();
+            if (grUser.next()) {
+                data.is_referred_email_available = true;
+
+                var trainingGr = getTrainingGr();
+                if (trainingGr == false) {
+                    //do nothing
+                } else {
+                    gs.eventQueue("x_509953_tc.trigger.referral.email", trainingGr, grUser.email, "");
+                }
+            } else {
+                data.is_referred_email_available = false;
+            }
+            input.referred_email = undefined;
+            input.action = undefined;
+        }
+    }
+
+    function getTrainingStatus(training, user) {
+        var grUserTraining = new GlideRecord("x_509953_tc_user_training_data");
+        grUserTraining.addQuery("user", user);
+        grUserTraining.addQuery("training", training);
+        grUserTraining.query();
+        if (grUserTraining.next())
+            return grUserTraining.progress_status.toString();
+        else
+            return "not_registered";
+    }
+
+    function getTrainingGr() {
+        var grTraining = new GlideRecord("x_509953_tc_training");
+        if (grTraining.get(data.training_sysId)) {
+            return grTraining;
+        } else {
+            return false;
+        }
+    }
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-17 20:02:18</sys_created_on>
+        <sys_id>1aa1227297191110fc70b998c253af8f</sys_id>
+        <sys_name>Training Activity</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_1aa1227297191110fc70b998c253af8f</sys_update_name>
+        <template><![CDATA[<div>
+  <div class="main-div">
+    <div ng-if="c.data.training_status == 'completed'" style="font-size: 1.75rem;">
+      You have already completed this training.<br/><br/>
+    </div>
+    <button ng-if="c.data.training_status == 'not_registered'" type="button" class="btn btn-primary btn-lg btn-block" ng-click="updateStatus('registration');">REGISTER</button>
+    <button ng-if="c.data.training_status == 'registered'" type="button" class="btn btn-primary btn-lg btn-block" ng-click="updateStatus('start');">START</button>
+    <button ng-if="c.data.training_status == 'in_progress'" type="button" class="btn btn-primary btn-lg btn-block" ng-click="updateStatus('resume');">RESUME</button>
+    <button ng-if="c.data.training_status == 'completed'" type="button" class="btn btn-primary btn-lg btn-block" ng-click="updateStatus('registration');">REGISTER AGAIN</button>
+
+    <button ng-if="c.data.training_status == 'registered' || c.data.training_status == 'in_progress'" type="button" class="btn btn-danger btn-lg btn-block" ng-click="updateStatus('cancel');">UNREGISTER</button>
+    <hr/>
+    <button type="button" data-toggle="modal" data-target="#shareModal" class="btn btn-lg btn-block" style="background-color: #a435f0; color: white;" ng-click="removeErrorMsg();">
+      SHARE
+      <span class="glyphicon glyphicon-share-alt"></span>
+    </button>
+  </div>
+  
+  
+  
+  <!--Toast for showing messages-->
+  <div class="toast">
+    <div class="toast-header">
+      <svg class="bd-placeholder-img mr-2" width="20" height="20" style="border-radius: 0.25rem;" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect fill="#007aff" width="100%" height="100%"></rect></svg>
+       &nbsp;&nbsp;
+      <strong class="mr-auto">{{c.data.toast_title}}</strong>
+      <small class="text-muted">just now</small>
+      &nbsp;&nbsp;
+      <button type="button" class="ml-2 mb-1 close" ng-click="closeToast();" aria-label="Close">
+      	<span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      {{c.data.toast_body}}
+    </div>
+  </div>
+	
+  
+  <!--Modal (Pop-Up) window for training share capability-->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-email" class="col-form-label" style="font-weight: 500; font-size: 2rem;">Enter email address to share this training!</label>
+            <input type="email" class="form-control" id="recipient-email" placeholder="user@example.com" ng-model="c.data.referred_email" ng-change="removeErrorMsg();">
+          </div>
+          
+          <div id="msgBox" role="alert" class="alert alert-danger">{{c.data.msg}}</div>
+        </form>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="shareTraining()">SHARE</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

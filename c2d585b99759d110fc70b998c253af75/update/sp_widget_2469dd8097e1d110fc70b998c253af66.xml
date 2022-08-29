@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($rootScope, $scope, spModal, $http, $window, spUtil) {
+  /* widget controller */
+  var c = this;
+	var sharedData = {};
+	var feedbackUrl = 'https://' + $window.location.host + "/tc?id=feedback&sys_id=" + c.data.training_sysId;
+	
+	$rootScope.$on("sharedData", function(event, data) {
+		sharedData = data;
+		
+		c.data.nextAvailable = (sharedData.listModule.length > (parseInt(sharedData.activeModuleIndex) + 1));
+		c.data.previousAvailable = (parseInt(sharedData.previousModuleIndex) > -1);
+		
+		if(c.data.previousAvailable)
+			c.data.previousIndex = parseInt(sharedData.previousModuleIndex);
+		
+		if(c.data.nextAvailable)
+			c.data.nextIndex = parseInt(sharedData.activeModuleIndex) + 1;
+  });
+	
+	
+	$scope.goNext = function(){
+		if(c.data.nextAvailable){
+			var currentIndex = c.data.nextIndex;
+			broadcastData((currentIndex - 1), currentIndex, true);
+		}
+	}
+	
+	$scope.goPrevious = function(){
+		var currentIndex = c.data.previousIndex;
+		if(c.data.previousAvailable){
+			broadcastData((currentIndex - 1), currentIndex, false);
+		}
+	}
+	
+	$scope.completeTraining = function(){
+		c.server.get({
+			action: "complete_training"
+		}).then(function(response){
+			if(response.data.isCompleted){
+				$window.location.href = feedbackUrl;
+			}
+		});
+	}
+	
+	function broadcastData(previousIndex, activeIndex, updateStatus){
+		$rootScope.$broadcast('sharedData', {
+			"listModule": sharedData.listModule,
+			"activeModuleIndex": activeIndex,
+			"previousModuleIndex": previousIndex,
+			"updateStatus": updateStatus
+		});
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css>div.bottom-nav{
+	position: absolute; 
+  top: 50%; 
+  -ms-transform: translateY(-50%); 
+  transform: translateY(-50%);
+  width: 97%;
+  display: block;
+}
+
+.nav-left{
+	width: wrap-content;
+} 
+
+.nav-right{
+	width: wrap-content;
+  display: relative; 
+  float: right;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>training_bottom_navigation</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Training Bottom Navigation</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	var trainingSysId = $sp.getParameter('sys_id');
+  var currentUser = gs.getUserID();
+	data.training_sysId = trainingSysId;
+	
+	if(input && input.action == "complete_training"){
+		data.isCompleted = false;
+		
+		var grUT = new GlideRecord("x_509953_tc_user_training_data");
+    grUT.addQuery("user", currentUser);
+    grUT.addQuery("training", trainingSysId);
+    grUT.query();
+    if (grUT.next()) {
+			var isUpdated = new x_509953_tc.TrainingCenterUtils().updateModuleRegistration("", grUT.sys_id);
+			if(isUpdated){
+				var progress = new x_509953_tc.TrainingCenterUtils().updateProgressPercent(grUT.sys_id);
+				if(progress == 100){
+					grUT.progress_status = "completed";
+					grUT.update();
+
+					data.isCompleted = true;
+				}
+			}
+    }
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-21 11:58:56</sys_created_on>
+        <sys_id>2469dd8097e1d110fc70b998c253af66</sys_id>
+        <sys_name>Training Bottom Navigation</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_widget_2469dd8097e1d110fc70b998c253af66</sys_update_name>
+        <template><![CDATA[<div class="bottom-nav">
+  <div class="nav-right">
+    <button ng-if="c.data.nextAvailable == true" type="button" class="btn btn-primary" ng-click="goNext();">Next</button>
+    <button ng-if="c.data.nextAvailable == false" type="button" class="btn btn-primary" ng-click="completeTraining();">Complete</button>
+  </div>
+  
+  <div class="nav-left">
+    <button ng-if="c.data.previousAvailable == true" type="button" class="btn btn-light" ng-click="goPrevious();">Previous</button>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

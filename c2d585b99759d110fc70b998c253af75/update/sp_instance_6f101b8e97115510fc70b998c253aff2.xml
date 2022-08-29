@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">ce5f0b8e97115510fc70b998c253af4c</sp_column>
+        <sp_widget display_value="Training Name Display">c2001b4297515510fc70b998c253afd6</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-08-15 15:29:51</sys_created_on>
+        <sys_id>6f101b8e97115510fc70b998c253aff2</sys_id>
+        <sys_name/>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sp_instance_6f101b8e97115510fc70b998c253aff2</sys_update_name>
+        <title/>
+        <url/>
+        <widget_parameters/>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=6f101b8e97115510fc70b998c253aff2"/>
+</record_update>

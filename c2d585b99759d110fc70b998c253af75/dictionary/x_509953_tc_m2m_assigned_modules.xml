@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="6650d5359799d110fc70b998c253af75" label="User Assigned Modules" max_length="40" name="x_509953_tc_m2m_assigned_modules" type="collection">
+        <element choice="1" label="Progress" max_length="40" name="progress" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Completed" value="completed"/>
+                <element inactive_on_update="false" label="Registered" value="registered"/>
+            </choice>
+        </element>
+        <element label="Sequence" max_length="40" name="sequence" type="integer"/>
+        <element label="Training Module" max_length="32" name="training_module" reference="x_509953_tc_training_modules" type="reference"/>
+        <element label="User Training Record" max_length="32" name="user_training_record" reference="x_509953_tc_user_training_data" type="reference"/>
+        <index name="index">
+            <element name="training_module"/>
+        </index>
+        <index name="index2">
+            <element name="user_training_record"/>
+        </index>
+    </element>
+</database>

@@ -45,7 +45,7 @@
     data.training = getTrainingDetails(trainingSysId);
 
     function getTrainingDetails(sysId) {
-        var imgSrc = "a963fa0697dd1510fc70b998c253af17.iix";
+        var imgSrc = gs.getProperty("x_509953_tc.default.training.bg.image");
         var grTraining = new GlideRecord("x_509953_tc_training");
 
         if (grTraining.get(sysId)) {

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="DELETE">
+        <category/>
+        <order>1</order>
+        <property display_value="x_509953_tc.default.training.bg.image" name="x_509953_tc.default.training.bg.image">47be556f97a9d110fc70b998c253afb9</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-09-01 09:22:59</sys_created_on>
+        <sys_id>252f59af97a9d110fc70b998c253af0e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_509953_tc.default.training.bg.image.</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_252f59af97a9d110fc70b998c253af0e</sys_update_name>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-09-01 09:22:59</sys_updated_on>
+    </sys_properties_category_m2m>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Training Center">c2d585b99759d110fc70b998c253af75</application>
+        <file_path/>
+        <instance_id>991e6835dbb4bbc0f492c59705961944</instance_id>
+        <instance_name>dev80876</instance_name>
+        <name>sys_properties_category_m2m_252f59af97a9d110fc70b998c253af0e</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m"><sys_properties_category_m2m action="INSERT_OR_UPDATE"><category/><order>1</order><property display_value="x_509953_tc.default.training.bg.image" name="x_509953_tc.default.training.bg.image">47be556f97a9d110fc70b998c253afb9</property><sys_class_name>sys_properties_category_m2m</sys_class_name><sys_created_by>abhrajyoti.kanrar</sys_created_by><sys_created_on>2022-09-01 09:22:59</sys_created_on><sys_id>252f59af97a9d110fc70b998c253af0e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_509953_tc.default.training.bg.image.</sys_name><sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package><sys_policy/><sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope><sys_update_name>sys_properties_category_m2m_252f59af97a9d110fc70b998c253af0e</sys_update_name><sys_updated_by>abhrajyoti.kanrar</sys_updated_by><sys_updated_on>2022-09-01 09:22:59</sys_updated_on></sys_properties_category_m2m></record_update>]]></payload>
+        <payload_hash>-277036201</payload_hash>
+        <record_name>x_509953_tc.default.training.bg.image.</record_name>
+        <reverted_from/>
+        <source>eb815a2697a11110fc70b998c253afd2</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-09-01 09:22:59</sys_created_on>
+        <sys_id>2f2fd56f97a9d110fc70b998c253afdf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>182f85c5f760000001</sys_recorded_at>
+        <sys_updated_by>abhrajyoti.kanrar</sys_updated_by>
+        <sys_updated_on>2022-09-01 09:22:59</sys_updated_on>
+        <type>Category Property</type>
+        <update_guid>672fd56f44a9d11062d68f5fd05f91df</update_guid>
+        <update_guid_history>672fd56f44a9d11062d68f5fd05f91df:-277036201</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-09-01 09:24:37</sys_created_on>
+        <sys_db_object display_value="" name="sys_properties_category_m2m">sys_properties_category_m2m</sys_db_object>
+        <sys_id>46f79498404f48008e65447cf96e0c81</sys_id>
+        <sys_metadata>252f59af97a9d110fc70b998c253af0e</sys_metadata>
+        <sys_name>x_509953_tc.default.training.bg.image.</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_scope_delete display_value="">512aeaaabe3a4986abb022218b8bc229</sys_scope_delete>
+        <sys_update_name>sys_properties_category_m2m_252f59af97a9d110fc70b998c253af0e</sys_update_name>
+        <sys_update_version display_value="sys_properties_category_m2m_252f59af97a9d110fc70b998c253af0e">2f2fd56f97a9d110fc70b998c253afdf</sys_update_version>
+    </sys_metadata_delete>
+</record_update>

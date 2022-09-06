@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="Training Center Properties">839f91ef97a9d110fc70b998c253af67</category>
+        <order>100</order>
+        <property display_value="x_509953_tc.default.training.bg.image" name="x_509953_tc.default.training.bg.image">47be556f97a9d110fc70b998c253afb9</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>abhrajyoti.kanrar</sys_created_by>
+        <sys_created_on>2022-09-01 09:25:42</sys_created_on>
+        <sys_id>53cf91ef97a9d110fc70b998c253af6a</sys_id>
+        <sys_name>x_509953_tc.default.training.bg.image.Training Center Properties</sys_name>
+        <sys_package display_value="Training Center" source="x_509953_tc">c2d585b99759d110fc70b998c253af75</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Training Center">c2d585b99759d110fc70b998c253af75</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_53cf91ef97a9d110fc70b998c253af6a</sys_update_name>
+    </sys_properties_category_m2m>
+</record_update>

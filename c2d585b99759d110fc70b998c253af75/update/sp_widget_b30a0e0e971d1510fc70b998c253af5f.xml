@@ -150,7 +150,7 @@ body {
         if (grAttachment.next())
             return grAttachment.sys_id + ".iix";
         else
-            return "a963fa0697dd1510fc70b998c253af17.iix";
+            return gs.getProperty("x_509953_tc.default.training.bg.image");
     }
 })();]]></script>
         <servicenow>false</servicenow>
